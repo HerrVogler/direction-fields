@@ -6,6 +6,7 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.util.Locale;
+import java.util.PropertyResourceBundle;
 import java.util.Scanner;
 
 /**
@@ -49,23 +50,25 @@ public class directionFields {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
+        PropertyResourceBundle res = (PropertyResourceBundle) PropertyResourceBundle.getBundle("hfu.ip.p1.belegaufgabe.menuItems", Locale.GERMAN);
+
         boolean run = true;
 
         while (run) {
             boolean suggestionAvailable = !suggestion.equals("");
 
-            System.out.println( " --- Menü ---\n" +
-                    " - Differentialgleichungen -\n" +
+            System.out.println( " --- " + res.getString("menu") + " ---\n" +
+                    " - " + res.getString("diffEquations") + " -\n" +
                     (suggestionAvailable ? "     - 0: y' = " + suggestion + "\n" : "") +
                     "     - 1: y' = 2xy\n" +
                     "     - 2: y' = - x / y\n" +
                     "     - 3: y' = x * x + y - 0.1\n" +
-                    "     - 4: benutzerdefiniert\n" +
-                    " - Optionen -\n" +
-                    "     " + (increment != 0.2 ? "-" : " ") + " 5: weniger Linienelemente\n" +
-                    "     " + (increment != 0.05 ? "-" : " ") + " 6: mehr Linienelemente\n" +
-                    "     - 7: Animationen " + (animated ? "ausschalten" : "einschalten") + "\n" +
-                    "     - 8: Programm beenden\n");
+                    "     - 4: " + res.getString("custom") + "\n" +
+                    " - " + res.getString("options") + " -\n" +
+                    "     " + (increment != 0.2 ? "-" : " ") + " 5: " + res.getString("lessElements") + "\n" +
+                    "     " + (increment != 0.05 ? "-" : " ") + " 6: " + res.getString("moreElements") + "\n" +
+                    "     - 7: " + (animated ? res.getString("turnOff") : res.getString("turnOn")) + "\n" +
+                    "     - 8: " + res.getString("quit") + "\n");
 
             System.out.print(" -  ");
 
