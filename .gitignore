@@ -4,3 +4,6 @@
 docs
 *.iml
 out
+.firebase
+.firebaserc
+firebase.json
